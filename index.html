@@ -35,7 +35,8 @@
 		let ball = {x : canvas.width - 10, y : canvas.height - 10, xd : -1, yd : -1};
 		randomBalls.push(ball);
 	}
-
+	var background = new Image();
+	background.src = "background.jpg";
 	function keyDown(e){
 		switch(e.key){
 			case "ArrowUp":
@@ -60,6 +61,7 @@
 
 	var draw = () => {
 		ctx.clearRect(0,0,canvas.width,canvas.height);
+		ctx.drawImage(background,0,0);
 		drawBall();
 		xCh += Xd; yCh += Yd;
 		for(let i = 0; i <= track; i++){
@@ -80,7 +82,7 @@
 	var drawBall = () =>{
 		ctx.beginPath();
 		ctx.arc(xCh, yCh, ballRadius, 0, Math.PI*2);
-		ctx.fillStyle = "green";
+		ctx.fillStyle = "yellow";
 		ctx.fill();
 		ctx.closePath();
 	};
@@ -114,12 +116,11 @@
 		}
 		return false;
 	};
-	function getRandomArbitrary(min, max) {
-		return Math.random() * (max - min) + min;
-	}
+	// function getRandomArbitrary(min, max) {
+	// 	return Math.random() * (max - min) + min;
+	// }
 	var interval2 = setInterval(()=>{
 		scoreLbl.innerHTML = ++track;
-		
 	}, 5000);
 	var interval1 = setInterval(draw, 5);
 
