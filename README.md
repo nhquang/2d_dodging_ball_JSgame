@@ -1,1 +1,1 @@
-# Dodging Ball JS game
+# Moving the Ball JS game
